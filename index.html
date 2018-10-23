@@ -28,7 +28,12 @@
 	      version    : 'v2.7'
 	    });
 	      
-	    FB.AppEvents.logPageView();   
+	    FB.AppEvents.logPageView();  
+
+	    FB.getLoginStatus(function(response) {
+	   		alert(response);
+	    	statusChangeCallback(response);
+		}); 
 	      
 	  };
 
@@ -40,10 +45,7 @@
 	     fjs.parentNode.insertBefore(js, fjs);
    	}(document, 'script', 'facebook-jssdk'));
 
-   	FB.getLoginStatus(function(response) {
-   		alert(response);
-    	statusChangeCallback(response);
-	});
+
 </script>
 </body>
 </html>
