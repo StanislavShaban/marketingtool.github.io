@@ -31,7 +31,7 @@
 	    FB.AppEvents.logPageView();  
 
 	    FB.getLoginStatus(function(response) {
-	   		alert(response);
+	   		alert(JSON.stringify(response);
 	    	statusChangeCallback(response);
 		}); 
 	      
