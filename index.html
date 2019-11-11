@@ -1,51 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 	<title></title>
-	<link href="/styles.css"/>
 </head>
 <body>
-	<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v3.1&appId=156664761953764&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-		<!-- <div class="login-form">
-			<form>
-				<button type="button">Login With Facebook</button>
-			</form>
-		</div> -->
-		<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
-	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '156664761953764',
-	      cookie     : true,
-	      xfbml      : true,
-	      version    : 'v2.7'
-	    });
-	      
-	    FB.AppEvents.logPageView();  
+	<input type="button" onclick="login();" value="Login"/>
+	<script type="text/javascript">
+		var accessToken = getAccessToken();
+		console.log(accessToken);
 
-	    FB.getLoginStatus(function(response) {
-	   		alert(JSON.stringify(response));
-	    	statusChangeCallback(response);
-		}); 
-	      
-	  };
+		VK.init(function() {
+	    // API initialization succeeded
+	    // Your code here
 
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "https://connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-   	}(document, 'script', 'facebook-jssdk'));
+	  	}, function() {
+	     // API initialization failed
+	     // Can reload page here
+		}, '5.103');
 
+		function login(){
+			window.location.href = 'https://oauth.vk.com/authorize?client_id=6237351&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends&response_type=token&v=5.103&state=123456';
+		}
 
-</script>
+		function getAccessToken() {
+			return new URL(location.href).searchParams.get('access_token')
+		}
+
+	</script>
 </body>
 </html>
