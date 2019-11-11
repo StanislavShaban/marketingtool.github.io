@@ -24,7 +24,7 @@
 		}
 
 		function getAccessToken() {
-			return new URL(location.href).searchParams.get('access_token')
+			return const params = new Map(location.search.slice(1).split('&').map(kv => kv.split('='))).get('access_token');
 		}
 
 	</script>
