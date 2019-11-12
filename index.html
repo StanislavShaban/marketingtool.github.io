@@ -10,24 +10,23 @@
 		var accessToken = getAccessToken();
 		console.log(accessToken);
 
-		VK.init(function() {
-	    // API initialization succeeded
-	    // Your code here
-	    	alert('Initialized');
-	    	VK.api("friends", {"user_id": "22177744", "v":"5.103"}, function (data) {
-				alert("Count:" + data.response.count);
-			});
-	  	}, function() {
-	     // API initialization failed
-	     // Can reload page here
-		}, '5.103');
+		function httpRequest(){
+			const Http = new XMLHttpRequest();
+			const url='https://api.vk.com/method/friends.get?user_id=22177744&access_token=78fa407cdd2a27e78048a4a29cc29d7dc7ac09e2b95dff2dc676c8b01dbb7cad36a7d8beeee18704d9cc1&v=5.103';
+			Http.open("GET", url);
+			Http.send();
+
+			Http.onreadystatechange = (e) => {
+			  console.log(Http.responseText)
+			}
+		}
 
 		function login(){
 			window.location.href = 'https://oauth.vk.com/authorize?client_id=7205438&display=page&redirect_uri=https://stanislavshaban.github.io&scope=friends&response_type=token&v=5.103&state=123456';
 		}
 
 		function getAccessToken() {
-			return window.location.href.split('#')[1].split('=')[1];
+			return window.location.href.split('#')[1].split('=')[1].split('&')[0];
 		}
 
 	</script>
