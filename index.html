@@ -9,7 +9,9 @@
 	<script type="text/javascript">
 		var accessToken = getAccessToken();
 		if(accessToken){
+			console.log('1');
 			httpRequest();
+			console.log('4');
 		}
 		console.log(accessToken);
 
@@ -18,8 +20,9 @@
 			const url='https://api.vk.com/method/friends.get?user_id=22177744&access_token='+accessToken+'&v=5.103';
 			Http.open("GET", url);
 			Http.send();
-
+			console.log('2');
 			Http.onreadystatechange = (e) => {
+				console.log('3');
 			  console.log(Http.responseText)
 			}
 		}
