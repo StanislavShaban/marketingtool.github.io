@@ -8,11 +8,14 @@
 	<input type="button" onclick="login();" value="Login"/>
 	<script type="text/javascript">
 		var accessToken = getAccessToken();
+		if(accessToken){
+			httpRequest();
+		}
 		console.log(accessToken);
 
 		function httpRequest(){
 			const Http = new XMLHttpRequest();
-			const url='https://api.vk.com/method/friends.get?user_id=22177744&access_token=78fa407cdd2a27e78048a4a29cc29d7dc7ac09e2b95dff2dc676c8b01dbb7cad36a7d8beeee18704d9cc1&v=5.103';
+			const url='https://api.vk.com/method/friends.get?user_id=22177744&access_token='+accessToken+'&v=5.103';
 			Http.open("GET", url);
 			Http.send();
 
